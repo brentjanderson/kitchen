@@ -1,0 +1,1 @@
+Log = this.Log || TLog.getLogger(TLog.LOGLEVEL_MAX, true);

@@ -1,0 +1,7 @@
+/* CSS declarations go here */
+
+.recipe-box .recipe {
+  width: 220px;
+  margin: 10px;
+  float: left;
+}

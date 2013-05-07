@@ -1,0 +1,14 @@
+<template name="recipes">
+    <h1>Recipes</h1>
+    
+    <div class="recipe-box">
+        {{#each recipes}}
+            <div class="recipe well">
+                <h2>{{name}}</h2>
+                <img class="img-polaroid" src="{{imgPath}}" alt="{{name}}">
+                <p>{{descriptionShort}}</p>
+                <p class="text-center"><a href="/recipe/{{_id}}" class="btn-large btn btn-primary viewRecipe">View Recipe</a></p>
+            </div>
+        {{/each}}
+    </div>
+</template>
