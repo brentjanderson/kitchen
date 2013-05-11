@@ -1,0 +1,117 @@
+<template name="createRecipe">
+    <a href="/">&laquo; Go Back</a>
+    <h1>Create Recipe</h1>
+    
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Basic Information</legend>
+            
+            <div class="control-group">
+                <label class="control-label" for="name">Name</label>
+                <div class="controls">
+                    <input name="recipe[name]" type="text" class="span4" placeholder="e.g. Creamy Chicken Enchiladas" id="name" value=""/>
+                    <span class="help-block">Make it simple yet descriptive</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="description">Description</label>
+                <div class="controls">
+                    <textarea name="recipe[description]" id="description" rows="3" class="span4" placeholder="No instructions here, just something succulent"></textarea>
+                    <span class="help-block">Make it simple yet descriptive</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="category">Category</label>
+                <div class="controls">
+
+                    <input type="text" name="recipe[categoryName]" placeholder="e.g. Yummy Dinners" id="category" value=""/>
+                    <span class="help-block">Make it simple yet descriptive. Write in your own to create a new category.</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="preparationTime">Preparation Time (in minutes)</label>
+                <div class="controls">
+                    <input type="number" name="recipe[preparationTime]" min="1" max="1000" step="1" placeholder="e.g. 30 (min), 90 (min)" id="preparationTime" value=""/>
+                    <span class="help-block">Try to enter the time in minutes</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="yield">Yield</label>
+                <div class="controls">
+                    <input type="number" name="recipe[yield]" min="1" max="1000" step="1" placeholder="e.g. 1 (serving), 5 (servings)" id="yield" value=""/>
+                    <span class="help-block">How many people will this feed?</span>
+                </div>
+            </div>
+        
+            <div class="control-group hidden">
+                <label class="control-label" for="image">Image</label>
+                <div class="controls">
+                    <input type="number" name="recipe[image]" id="image"/>
+                    <span class="help-block">A picture is worth a thousand words</span>
+                </div>
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Ingredients</legend>
+            <span class="help-block">Add as many or as few ingredients as you like</span>
+            <table class="table table-striped table-bordered table-hover table-ingredients">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Order</th>
+                        <th>Remove/Add</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?PHP foreach ($recipe->recipeIngredients as $key => $recipeIngredient): ?>
+                        <?PHP $this->renderPartial('/recipe/partials/ingredientRow', array('units' => $units, 'ingredient' => $recipeIngredient, 'rowID' => $recipeIngredient->id)); ?>
+                    <?PHP endforeach; ?>
+                    <?PHP $this->renderPartial('/recipe/partials/ingredientRow', array('units' => $units, 'ingredient' => new RecipeIngredient, 'rowID' => md5(rand()))); ?>
+                </tbody>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Instructions</legend>
+            <span class="help-block">The real <em>meat</em> of the recipe</span>
+            <table class="table table-striped table-bordered table-hover table-instructions">
+                <thead>
+                    <tr>
+                        <th>Ordering</th>
+                        <th>Step #</th>
+                        <th>Instructions</th>
+                        <th>Remove/Add</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?PHP foreach ($recipe->recipeSteps as $key => $recipeStep): ?>
+                        <?php $this->renderPartial('/recipe/partials/instructionRow', array('step' => $recipeStep, 'rowID' => $recipeStep->id)); ?>
+                    <?PHP endforeach; ?>
+                    <?php $this->renderPartial('/recipe/partials/instructionRow', array('step' => new RecipeStep, 'rowID' => md5(rand()))); ?>
+                </tbody>
+            </table>
+            <span class="help-block">Any rows without instructions will be ignored. No worries!</span>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>The Finishing Touches...</legend>
+            <div class="control-group">
+                <label class="control-label" for="tags">Tags</label>
+                <div class="controls">
+                    <input class="tagManager" type="text" placeholder="curry, chicken, tasty, dinner" id="tags" value="<?PHP print $recipe->preparationTime; ?>"/>
+                    <span class="help-block">Enter a few words separated by commas that describe this dish</span>
+                </div>
+            </div>
+        </fieldset>
+
+        <input type="submit" class="btn btn-large btn-success" value="Create Recipe!"/>
+    </form>
+</template>
