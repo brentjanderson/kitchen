@@ -1,0 +1,31 @@
+<template name="admin">
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        <a href="/" class="btn">&laquo; Go Back</a>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="span12">
+        <h1>Administrator</h1>
+        <h2>Categories</h2>
+        <ul class="nav nav-tabs nav-stacked">
+          {{#each categories}}
+            <li><a href="#">{{name}}<span class="pull-right category">&times;</span></a></li>
+          {{/each}}
+        </ul>
+        <a href="#" class="btn createCategory">Add Category</a>
+        
+        <h2>Units</h2>
+        <ul class="nav nav-tabs nav-stacked">
+          {{#each units}}
+            <li><a href="#">{{name}}<span class="pull-right unit">&times;</span></a></li>
+          {{/each}}
+        </ul>
+        <a href="#" class="btn createUnit">Add Unit</a>
+        
+      </div>
+    </div>
+  </div>
+</template>

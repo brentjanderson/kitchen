@@ -6,6 +6,7 @@
   "packages": {
     "router": {},
     "observatory": {},
-    "jquery-masonry": {}
+    "jquery-masonry": {},
+    "bootboxjs": {}
   }
 }

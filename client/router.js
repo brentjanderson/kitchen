@@ -4,7 +4,12 @@ Meteor.Router.add({
     Session.set('currentRecipe', id);
     return 'recipe';
   },
-  '/addRecipe': 'createRecipe',
+  '/addRecipe': function() {
+  	return 'createRecipe';
+  },
+  '/admin': function() {
+  	return 'admin';
+  },
   
   '*': 'fourOhFour'
 });

@@ -2,13 +2,14 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "bfe4b72ebec4367eaddcdf0887fcf5e649d9dcb8"
+    "commit": "5d736d4bf0448c7db1f9b47124dfafc34a9631bb"
   },
   "dependencies": {
     "basePackages": {
       "router": {},
       "observatory": {},
-      "jquery-masonry": {}
+      "jquery-masonry": {},
+      "bootboxjs": {}
     },
     "packages": {
       "router": {
@@ -25,6 +26,11 @@
         "git": "https://github.com/waltyuyu/meteor-jquery-masonry.git",
         "tag": "v0.1.0",
         "commit": "ec514fa4440f3cd77f5f567f25be27dc38ab57fa"
+      },
+      "bootboxjs": {
+        "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
+        "tag": "v0.1.1",
+        "commit": "6c46c71a5632eb49b20cd679a5008b7dc9ac39af"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

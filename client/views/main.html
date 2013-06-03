@@ -1,21 +1,28 @@
 <head>
   <title>Anderson's Kitchen</title>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="span3">
-                {{loginButtons}}
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                {{renderPage}}
-            </div>
-        </div>
-    </div>
+  {{> header}}
+  <div class="container">
+      <div class="row">
+          <div class="span12">
+              {{renderPage}}
+          </div>
+      </div>
+  </div>
 </body>
 
+<template name="header">
+  <div class="container">
+      <div class="row">
+          <div class="span3">
+              {{loginButtons}}
+          </div>
+          <div class="span3 offset6">
+            <a href="/admin" class="admin">Admin</a>
+          </div>
+      </div>
+  </div>
+</template>
